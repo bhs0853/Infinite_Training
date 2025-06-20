@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{328310DD-5D3B-40C0-8D6D-927BD9925E89}</ProjectGuid>
+    <ProjectGuid>{15FDA68E-1B17-445E-AF90-77490B924D72}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>assignment1</RootNamespace>
-    <AssemblyName>assignment1</AssemblyName>
+    <RootNamespace>assignment2</RootNamespace>
+    <AssemblyName>assignment2</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>assignment1.Program</StartupObject>
+    <StartupObject>assignment2.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -46,8 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="arrays.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="stringmanipulation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

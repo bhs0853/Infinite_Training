@@ -56,12 +56,29 @@ namespace assignment1
             int a = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Input 2nd number:");
             int b = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine($"{a} + {b} = {a + b}");
-            Console.WriteLine($"{a} + {b} = {a + b}");
-            Console.WriteLine($"{a} - {b} = {a - b}");
-            Console.WriteLine($"{a} * {b} = {a * b}");
-            if (b != 0)
-                Console.WriteLine($"{a} / {b} = {a * 1.0 / b}");
+            Console.WriteLine("Enter Operation:");
+            char ch = Convert.ToChar(Console.ReadLine());
+            switch (ch)
+            {
+                case '+':
+                    Console.WriteLine($"{a} + {b} = {a + b}");
+                    break;
+                case '-':
+                    Console.WriteLine($"{a} - {b} = {a - b}");
+                    break;
+                case '*':
+                    Console.WriteLine($"{a} * {b} = {a * b}");
+                    break;
+                case ('/'):
+                    if(b != 0)
+                        Console.WriteLine($"{a} / {b} = {a * 1.0 / b}");
+                    else
+                        Console.WriteLine("divide by zero exp");
+                    break;
+                default:
+                    Console.WriteLine("invalid operation");
+                    break;
+            }
         }
 
         //4. Write a C# Sharp program that prints the multiplication table of a number as input.
