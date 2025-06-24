@@ -1,0 +1,7 @@
+C:\drive\Infinite_Training\csharp\assignments\assignment3\bin\Debug\assignment3.exe.config
+C:\drive\Infinite_Training\csharp\assignments\assignment3\bin\Debug\assignment3.exe
+C:\drive\Infinite_Training\csharp\assignments\assignment3\bin\Debug\assignment3.pdb
+C:\drive\Infinite_Training\csharp\assignments\assignment3\obj\Debug\assignment3.csproj.AssemblyReference.cache
+C:\drive\Infinite_Training\csharp\assignments\assignment3\obj\Debug\assignment3.csproj.CoreCompileInputs.cache
+C:\drive\Infinite_Training\csharp\assignments\assignment3\obj\Debug\assignment3.exe
+C:\drive\Infinite_Training\csharp\assignments\assignment3\obj\Debug\assignment3.pdb
