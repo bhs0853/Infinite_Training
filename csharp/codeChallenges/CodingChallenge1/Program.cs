@@ -11,7 +11,7 @@ namespace CodingChallenge1
             Question1();
             Console.WriteLine("********************");
             Console.WriteLine("********** Swapping characters in a string **********");
-            Question2();
+            Console.WriteLine($"The string after swaping first and last characters is {Question2()}");
             Console.WriteLine("********************");
             Console.WriteLine("********** Find max number out of three numbers **********");
             Question3();
@@ -29,15 +29,16 @@ namespace CodingChallenge1
             Console.WriteLine($"The string after removing char at {index}: {s}");
         }
 
-        static void Question2()
+        static string Question2()
         {
             Console.WriteLine("Enter the string: ");
-            StringBuilder s = new StringBuilder(Console.ReadLine());
+            string temp = Console.ReadLine();
+            StringBuilder s = new StringBuilder(temp);
             char last = s[s.Length - 1];
             char first = s[0];
             s.Replace(first, last, 0, 1);
             s.Replace(last, first, s.Length - 1, 1);
-            Console.WriteLine($"The string after swaping first and last characters is {s}");
+            return s.ToString();
         }
 
         static void Question3()
