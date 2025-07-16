@@ -1,0 +1,7 @@
+C:\drive\Infinite_Training\SQL\codeChallenges\codechallenge1(csharp-sql)\codeChallenge1(csharp sql)\bin\Debug\codeChallenge1(csharp sql).exe.config
+C:\drive\Infinite_Training\SQL\codeChallenges\codechallenge1(csharp-sql)\codeChallenge1(csharp sql)\bin\Debug\codeChallenge1(csharp sql).exe
+C:\drive\Infinite_Training\SQL\codeChallenges\codechallenge1(csharp-sql)\codeChallenge1(csharp sql)\bin\Debug\codeChallenge1(csharp sql).pdb
+C:\drive\Infinite_Training\SQL\codeChallenges\codechallenge1(csharp-sql)\codeChallenge1(csharp sql)\obj\Debug\codeChallenge1(csharp sql).csproj.AssemblyReference.cache
+C:\drive\Infinite_Training\SQL\codeChallenges\codechallenge1(csharp-sql)\codeChallenge1(csharp sql)\obj\Debug\codeChallenge1(csharp sql).csproj.CoreCompileInputs.cache
+C:\drive\Infinite_Training\SQL\codeChallenges\codechallenge1(csharp-sql)\codeChallenge1(csharp sql)\obj\Debug\codeChallenge1(csharp sql).exe
+C:\drive\Infinite_Training\SQL\codeChallenges\codechallenge1(csharp-sql)\codeChallenge1(csharp sql)\obj\Debug\codeChallenge1(csharp sql).pdb
