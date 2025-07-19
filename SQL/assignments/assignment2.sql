@@ -1,4 +1,4 @@
-CREATE TABLE dept(
+ï»¿CREATE TABLE dept(
 deptno int primary key,
 dname varchar(30),
 loc varchar(30)
@@ -70,7 +70,7 @@ select d.Deptno 'Department No', Dname 'Department Name', count(*) 'No of Employ
 -- 11. Find out salary of both MILLER and SMITH.
 select Ename, Salary from emp where ename in ('MILLER', 'SMITH');
 
--- 12. Find out the names of the employees whose name begin with ‘A’ or ‘M’. 
+-- 12. Find out the names of the employees whose name begin with â€˜Aâ€™ or â€˜Mâ€™. 
 select Ename from emp where ename like 'A%' or ename like 'M%';
 
 -- 13. Compute yearly salary of SMITH. 
