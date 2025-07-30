@@ -1,0 +1,7 @@
+C:\drive\Infinite_Training\ADO\codeChallenges\codeChallenge6\bin\Debug\codeChallenge6.exe.config
+C:\drive\Infinite_Training\ADO\codeChallenges\codeChallenge6\bin\Debug\codeChallenge6.exe
+C:\drive\Infinite_Training\ADO\codeChallenges\codeChallenge6\bin\Debug\codeChallenge6.pdb
+C:\drive\Infinite_Training\ADO\codeChallenges\codeChallenge6\obj\Debug\codeChallenge6.csproj.AssemblyReference.cache
+C:\drive\Infinite_Training\ADO\codeChallenges\codeChallenge6\obj\Debug\codeChallenge6.csproj.CoreCompileInputs.cache
+C:\drive\Infinite_Training\ADO\codeChallenges\codeChallenge6\obj\Debug\codeChallenge6.exe
+C:\drive\Infinite_Training\ADO\codeChallenges\codeChallenge6\obj\Debug\codeChallenge6.pdb
