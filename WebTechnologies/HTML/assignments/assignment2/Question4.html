@@ -1,0 +1,77 @@
+﻿<!--4. How to make use of animation-delay , and then restart again-->
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Animation Delay</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: cornflowerblue;
+            border-radius: 50px;
+            animation-duration: 3000ms;
+            position: relative;
+            animation-delay: 1s;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes delay {
+            0% {
+                background-color: cornflowerblue;
+            }
+
+            25% {
+                background-color: red;
+                left: 200px;
+                top: 0px;
+            }
+
+            50% {
+                background-color: lawngreen;
+                left: 200px;
+                top: 200px;
+            }
+
+            75% {
+                background-color: peachpuff;
+                top: 200px;
+            }
+
+            100% {
+                background-color: cornflowerblue;
+            }
+        }
+
+        button {
+            background-color: transparent;
+            color: white;
+            text-align: center;
+            font-size: 16px;
+            transition: transform 0.5s ease, box-shadow 0.3s;
+            border: none;
+            border-width: 100px;
+            border-radius: 0px;
+            cursor: pointer;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box">
+        <div style="text-align: center; margin-top: 20px;">
+            <button onclick="start()">Start</button>
+        </div>
+    </div>
+    <script>
+        function start() {
+            const box = document.getElementById("box");
+            box.style.animation = "none";
+            void box.offsetWidth;
+            box.style.animation = "delay 3s 3s forwards";
+        }
+    </script>
+</body>
+</html>
