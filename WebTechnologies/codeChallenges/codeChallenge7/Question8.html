@@ -1,0 +1,29 @@
+﻿<!-- 8. Append a <p> element with a text message when an <input> field is changed.-->
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.4.1.min.js"></script>
+    <title>Question 8</title>
+</head>
+<body>
+    <input placeholder="write something" id="textBox"/>
+    <div>
+        <ol id="list">
+
+        </ol>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#textBox").change(function () {
+                var text = document.getElementById("textBox");
+                $("#list").append(`<li>${text.value}</li>`);
+                text.value = "";
+            });
+
+        })
+    </script>
+</body>
+</html>

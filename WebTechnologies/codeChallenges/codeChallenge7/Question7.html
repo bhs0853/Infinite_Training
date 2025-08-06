@@ -1,0 +1,28 @@
+﻿<!-- 7. Write a jQuery Code to add a tag at the beginning of the list item, containing the index of the list item-->
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.4.1.min.js"></script>
+    <title>Question 7</title>
+</head>
+<body>
+    <ul id="list">
+        <li id="l1">CSHARP</li>
+        <li id="l2">SQL</li>
+        <li id="l3">ADO</li>
+    </ul>
+    <button id="btn">Add indexes</button>
+    <script>
+        $(document).ready(function () {
+            $("#btn").click(function () {
+                $("ul #l1").text("1. CSHARP")
+                $("ul #l2").text("2. SQL")
+                $("ul #l3").text("3. ADO")
+            })
+        })
+    </script>
+</body>
+</html>

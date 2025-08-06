@@ -1,0 +1,26 @@
+﻿<!-- 5. Find all h1 elements that are children of a div element and apply a background to them.-->
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Question 5</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <h1>H1 outside div</h1>
+    <div id="container" style="border: 1px solid black; padding-left: 10px">
+        <h1>h1 inside div</h1>
+        <h5>h5 inside div</h5>
+        <h1>h1 inside div</h1>
+    </div>
+    <button id="btn" style="margin-top:10px">Apply background to h1</button>
+    <script>
+        $(document).ready(function () {
+            $("#btn").click(function () {
+                $('div  h1').css({ "background-color": "cornflowerblue" });
+            })
+        })
+    </script>
+</body>
+</html>

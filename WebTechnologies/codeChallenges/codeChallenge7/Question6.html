@@ -1,0 +1,35 @@
+﻿<!-- 6. Write a jQuery Code to get a single element from a selection.-->
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Question 6</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <ul>
+        <li id="l1">CSHARP</li>
+        <li id="l2">SQL</li>
+        <li id="l3">ADO</li>
+    </ul>
+    <button id="btn1">get l1</button>
+    <button id="btn2">get l2</button>
+    <button id="btn3">get l3</button>
+
+    <script>
+        $(document).ready(function () {
+            $("#btn1").click(function () {
+                $("ul #l1").text("CSHARP selected")
+            })
+            $("#btn2").click(function () {
+                $("ul #l2").text("SQL selected")
+            })
+            $("#btn3").click(function () {
+                $("ul #l3").text("ADO selected")
+            })
+        })
+    </script>
+</body>
+</html>
