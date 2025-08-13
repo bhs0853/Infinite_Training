@@ -1,0 +1,7 @@
+C:\drive\training\MiniProject1\Railway_Reservation\bin\Debug\Railway_Reservation.exe.config
+C:\drive\training\MiniProject1\Railway_Reservation\bin\Debug\Railway_Reservation.exe
+C:\drive\training\MiniProject1\Railway_Reservation\bin\Debug\Railway_Reservation.pdb
+C:\drive\training\MiniProject1\Railway_Reservation\obj\Debug\Railway_Reservation.csproj.AssemblyReference.cache
+C:\drive\training\MiniProject1\Railway_Reservation\obj\Debug\Railway_Reservation.csproj.CoreCompileInputs.cache
+C:\drive\training\MiniProject1\Railway_Reservation\obj\Debug\Railway_Reservation.exe
+C:\drive\training\MiniProject1\Railway_Reservation\obj\Debug\Railway_Reservation.pdb
