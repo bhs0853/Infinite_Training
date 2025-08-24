@@ -1,0 +1,58 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="Electricity_Billing_Project.Site1" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Electricity Board</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header, footer {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .nav {
+            margin: 0 100px
+        }
+
+        .nav-link {
+            color: blue;
+            text-decoration: none;
+            margin: 0 50px;
+        }
+
+        .nav-link:hover {
+            cursor: pointer;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <form runat="server">
+        <header>
+            <h2>Electricity Board Billing System</h2>
+        </header>
+        <div class="nav">
+            <asp:HyperLink class="nav-link" ID="login" runat="server" NavigateUrl="~/LoginPage.aspx" Text="Login"></asp:HyperLink>
+            <asp:HyperLink class="nav-link" ID="welcome" runat="server" NavigateUrl="~/WelcomePage.aspx" Text="Home"></asp:HyperLink>
+            <asp:HyperLink class="nav-link" ID="add" runat="server" NavigateUrl="~/AddBillsPage.aspx" Text="Add Bills"></asp:HyperLink>
+            <asp:HyperLink class="nav-link" ID="view" runat="server" NavigateUrl="~/ViewBillsPage.aspx" Text="View Bills"></asp:HyperLink>
+            <asp:HyperLink class="nav-link" ID="logout" runat="server" NavigateUrl="~/LogOutPage.aspx" Text="Log out"></asp:HyperLink>
+        </div>
+        <section>
+            <article>
+                <asp:ContentPlaceHolder ID="PrimaryContent" runat="server"></asp:ContentPlaceHolder>
+            </article>
+        </section>
+    </form>
+    <footer>
+        &copy; Infinite Electricity Board
+    </footer>
+</body>
+</html>
