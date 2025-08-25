@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Question2.Models.Movies>
+@{
+    ViewBag.Title = "MovieList";
+}
+
+<h2>MovieList</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Moviename)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DirectorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateofRelease)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Moviename)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DirectorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateofRelease)
+            </td>
+        </tr>
+    }
+</table>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

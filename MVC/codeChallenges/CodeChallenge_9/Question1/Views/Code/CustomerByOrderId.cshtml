@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Question1.Models.Customer>
+@{
+    ViewBag.Title = "GetCustomerByOrderId";
+}
+
+<h2>customer details with an orderId: 10248</h2>
+
+<ol>
+    @foreach (var customer in Model)
+    {
+        <li>Customer ID: @customer.CustomerID</li>
+        <ul>
+            <li>Company Name: @customer.CompanyName</li>
+            <li>Contact Name: @customer.ContactName</li>
+            <li>Contact Title: @customer.ContactTitle</li>
+            <li>Contact Address: @customer.Address</li>
+            <li>Country: @customer.Country</li>
+        </ul>
+    }
+</ol>
+
