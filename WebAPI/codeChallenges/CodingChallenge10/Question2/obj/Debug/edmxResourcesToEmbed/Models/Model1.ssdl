@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="practiceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <Function Name="CustOrderHist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CustomerID" Type="nchar" Mode="In" />
+  </Function>
+  <Function Name="CustOrdersDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="OrderID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="CustOrdersOrders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CustomerID" Type="nchar" Mode="In" />
+  </Function>
+  <Function Name="Employee_Sales_by_Country" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="Employee Sales by Country">
+    <Parameter Name="Beginning_Date" Type="datetime" Mode="In" />
+    <Parameter Name="Ending_Date" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="fn_FindArea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="length" Type="int" Mode="In" />
+    <Parameter Name="breadth" Type="int" Mode="In" />
+  </Function>
+  <Function Name="fn_FindCubeOfaNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="num" Type="int" Mode="In" />
+  </Function>
+  <Function Name="fn_FindCustomerByCountryName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="country" Type="varchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="CustomerID" Type="nchar" MaxLength="5" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="40" />
+          <Property Name="country" Type="nvarchar" MaxLength="15" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fn_GetEmpByJob" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="job" Type="varchar" MaxLength="50" />
+          <Property Name="count" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fndisplaydetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+    <Parameter Name="ename" Type="varchar" Mode="In" />
+    <Parameter Name="hire_date" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="fndisplaysalarydetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar">
+    <Parameter Name="eno" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sales_by_Year" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="Sales by Year">
+    <Parameter Name="Beginning_Date" Type="datetime" Mode="In" />
+    <Parameter Name="Ending_Date" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="SalesByCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CategoryName" Type="nvarchar" Mode="In" />
+    <Parameter Name="OrdYear" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_chkerror" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getavgsalaryncount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Deptno" Type="int" Mode="In" />
+    <Parameter Name="AvgSalary" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sp_getEmpByDept" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DeptName" Type="varchar" Mode="In" />
+    <Parameter Name="sal" Type="float" Mode="In" />
+  </Function>
+  <Function Name="sp_getMgrnSalByEmp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Empno" Type="int" Mode="In" />
+    <Parameter Name="EmpName" Type="varchar" Mode="InOut" />
+    <Parameter Name="MgrName" Type="varchar" Mode="InOut" />
+    <Parameter Name="salary" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="sp_getMgrSalByEmp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Empno" Type="int" Mode="In" />
+    <Parameter Name="MgrName" Type="varchar" Mode="InOut" />
+    <Parameter Name="salary" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="Ten_Most_Expensive_Products" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="Ten Most Expensive Products" />
+  <EntityContainer Name="practiceModelStoreContainer" />
+</Schema>

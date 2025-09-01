@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="practiceModelStoreContainer" CdmEntityContainer="practiceEntities1">
+    <FunctionImportMapping FunctionName="practiceModel.Store.fn_FindCustomerByCountryName" FunctionImportName="fn_FindCustomerByCountryName">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="practiceModel.fn_FindCustomerByCountryName_Result">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="country" ColumnName="country" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="practiceModel.Store.fn_GetEmpByJob" FunctionImportName="fn_GetEmpByJob">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="practiceModel.fn_GetEmpByJob_Result">
+          <ScalarProperty Name="job" ColumnName="job" />
+          <ScalarProperty Name="count" ColumnName="count" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CustOrderHist" FunctionName="practiceModel.Store.CustOrderHist">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="practiceModel.CustOrderHist_Result">
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CustOrdersDetail" FunctionName="practiceModel.Store.CustOrdersDetail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="practiceModel.CustOrdersDetail_Result">
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="ExtendedPrice" ColumnName="ExtendedPrice" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CustOrdersOrders" FunctionName="practiceModel.Store.CustOrdersOrders">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="practiceModel.CustOrdersOrders_Result">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="RequiredDate" ColumnName="RequiredDate" />
+          <ScalarProperty Name="ShippedDate" ColumnName="ShippedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Employee_Sales_by_Country" FunctionName="practiceModel.Store.Employee_Sales_by_Country">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="practiceModel.Employee_Sales_by_Country_Result">
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="ShippedDate" ColumnName="ShippedDate" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="SaleAmount" ColumnName="SaleAmount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sales_by_Year" FunctionName="practiceModel.Store.Sales_by_Year">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="practiceModel.Sales_by_Year_Result">
+          <ScalarProperty Name="ShippedDate" ColumnName="ShippedDate" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SalesByCategory" FunctionName="practiceModel.Store.SalesByCategory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="practiceModel.SalesByCategory_Result">
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="TotalPurchase" ColumnName="TotalPurchase" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_chkerror" FunctionName="practiceModel.Store.sp_chkerror" />
+    <FunctionImportMapping FunctionImportName="sp_getavgsalaryncount" FunctionName="practiceModel.Store.sp_getavgsalaryncount" />
+    <FunctionImportMapping FunctionImportName="sp_getEmpByDept" FunctionName="practiceModel.Store.sp_getEmpByDept">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="practiceModel.sp_getEmpByDept_Result">
+          <ScalarProperty Name="empno" ColumnName="empno" />
+          <ScalarProperty Name="ename" ColumnName="ename" />
+          <ScalarProperty Name="job" ColumnName="job" />
+          <ScalarProperty Name="mgr_id" ColumnName="mgr_id" />
+          <ScalarProperty Name="hire_date" ColumnName="hire_date" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="comm" ColumnName="comm" />
+          <ScalarProperty Name="deptno" ColumnName="deptno" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getMgrnSalByEmp" FunctionName="practiceModel.Store.sp_getMgrnSalByEmp" />
+    <FunctionImportMapping FunctionImportName="sp_getMgrSalByEmp" FunctionName="practiceModel.Store.sp_getMgrSalByEmp" />
+    <FunctionImportMapping FunctionImportName="Ten_Most_Expensive_Products" FunctionName="practiceModel.Store.Ten_Most_Expensive_Products">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="practiceModel.Ten_Most_Expensive_Products_Result">
+          <ScalarProperty Name="TenMostExpensiveProducts" ColumnName="TenMostExpensiveProducts" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
