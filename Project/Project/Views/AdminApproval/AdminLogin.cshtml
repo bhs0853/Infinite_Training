@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "AdminLogin";
+    ViewBag.NavType = "Adminloginview";
+    Layout = "~/Views/Shared/_Banking.cshtml";
+}
+
+<div class="row" style="justify-content:center; display:flex; margin-top:30px">
+    <div class="col-md-4" style="margin-top:40px; margin-left:50px">
+
+        <div class="card text-center" style="width: 370px; height: 300px; border: 1px solid #ccc; border-radius: 5px; padding: 0px; margin-left:-40px;">
+            <div class="card-header">
+                Admin Login
+            </div>
+
+            <form method="post">
+                <div id="errorMsg" style="color: red">@ViewBag.Message</div>
+                <div class="form-row">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email" placeholder="Enter your email" class="form-control" />
+                </div>
+
+                <div class="form-row">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your Password" class="form-control" />
+                </div>
+
+                <button class="btn" style="margin-top: 20px; background-color: #1877F2;color:white;" type="submit">Sign In</button>
+            </form>
+            <br /><br />
+            
+        </div>
+    </div>
+
+
+</div>
+
+<style>
+    .card-box {
+        width: 350px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        margin: auto;
+    }
+
+    .card-header {
+        background-color: #eaf1ff;
+        color: #1877F2;
+        font-size: 24px;
+        font-weight: 600;
+        text-align: center;
+        padding: 20px 10px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .card-body {
+        padding: 20px;
+        background-color: #fff;
+    }
+
+    .custom-btn {
+        background-color: #1877F2;
+        color: white;
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+    }
+
+    .form-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 10px 0;
+    }
+
+        .form-row label {
+            width: 100px;
+            font-weight: bold;
+            color: black;
+            text-align: left;
+            margin-left: 10px;
+        }
+
+        .form-row input.form-control {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+    .user-login-title {
+        background-color: #eaf1ff;
+        color: #1877F2;
+        padding: 15px 0;
+        border-radius: 4px;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+</style>
+

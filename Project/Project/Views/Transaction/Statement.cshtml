@@ -1,0 +1,161 @@
+﻿@model List<Project.Models.Transaction_Details>
+
+@{
+    ViewBag.Title = "Account Statement";
+    Layout = "~/Views/Shared/_Banking.cshtml";
+    ViewBag.NavType = "UserLoggedIn";
+    ViewBag.Account = Session["Account"];
+    var maxDate = DateTime.Now.ToString("yyyy-MM-dd");
+}
+
+<div class="statement-wrapper">
+    <h2 class="section-title">Account Statement</h2>
+
+    @using (Html.BeginForm("Statement", "Transaction", FormMethod.Post))
+    {
+        <div class="date-range">
+            <div class="date-field">
+                <label for="from">From</label>
+                <input type="date" name="from" id="from" class="form-control" max="@maxDate" />
+            </div>
+            <div class="date-field">
+                <label for="to">To</label>
+                <input type="date" name="to" id="to" class="form-control" max="@maxDate" />
+            </div>
+            <button type="submit" class="btn primary-btn">Get Statement</button>
+        </div>
+    }
+
+    @if (ViewBag.Message != null)
+    {
+        <p class="info-message">@ViewBag.Message</p>
+    }
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="card">
+            <table class="table statement-table">
+                <thead>
+                    <tr>
+                        <th>Txn Id</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Amount</th>
+                        <th>Balance</th>
+                        <th>Type</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var txn in Model)
+                    {
+                        <tr>
+                            <td>@txn.Transaction_Id</td>
+                            <td>@txn.From_Account</td>
+                            <td>@txn.To_Account</td>
+                            <td>₹ @txn.Amount</td>
+                            <td>₹ @txn.Balance</td>
+                            <td>@txn.Transaction_Type</td>
+                            <td>@txn.Transaction_Date</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <p class="info-message">No data yet. Generate statement above.</p>
+    }
+</div>
+
+<style>
+    .statement-wrapper {
+        background-color: white;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        margin-top: 20px;
+    }
+
+    .section-title {
+        color: #1877F2;
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .date-range {
+        display: flex;
+        gap: 15px;
+        align-items: flex-end;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+
+    .date-field label {
+        font-weight: 600;
+        color: #333;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .date-field input,
+    .date-field select {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 180px;
+    }
+
+    .primary-btn {
+        background-color: #1877F2;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+        .primary-btn:hover {
+            background-color: #145dbf;
+        }
+
+    .info-message {
+        color: #555;
+        font-style: italic;
+        margin-top: 10px;
+    }
+
+    .statement-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .statement-table th, .statement-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .statement-table th {
+            background-color: #eaf1ff;
+            color: #1877F2;
+        }
+
+        .statement-table tr:hover {
+            background-color: #f0f8ff;
+        }
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const fromDateInput = document.getElementById("from");
+        const toDateInput = document.getElementById("to");
+
+        fromDateInput.addEventListener("change", function () {
+            toDateInput.min = fromDateInput.value;
+        });
+    });
+</script>
+

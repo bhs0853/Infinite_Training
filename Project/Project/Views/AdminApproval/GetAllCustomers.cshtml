@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Project.Models.Customer>
+@{
+    ViewBag.Title = "GetAllCustomers";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+
+
+
+<table class="table table-bordered table-striped">
+    <thead class="table-header">
+        <tr>
+
+            <th>Account No</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Actions</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.Accounts.First().Account_Number.ToString()</td>
+                <td>@customer.First_Name</td>
+                <td>@customer.Email_Id</td>
+                <td>@customer.Mobile_Number</td>
+                <td>
+                    <a href="@Url.Action("CustomerDetails", "AdminApproval", new { id = customer.Customer_Id })" title="View Details">
+                        <span >View Transactions</span>
+                    </a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+<style>
+    .table-header {
+        background-color: #2F3E4D;
+        
+        color: white;
+        font-weight: bold;
+    }
+
+
+</style>
+
+
+

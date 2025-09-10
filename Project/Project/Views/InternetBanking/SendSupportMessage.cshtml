@@ -1,0 +1,50 @@
+﻿@model Project.Models.SupportMessage
+
+@{
+    ViewBag.Title = "Send Support Message";
+    ViewBag.NavType = "UserLoggedIn";
+    ViewBag.Account = Session["Account"];
+    Layout = "~/Views/Shared/_Banking.cshtml";
+}
+
+<div class="card" style="background-color:white; border:1px solid #ccc; border-radius:5px; padding:20px; max-width:600px; margin:auto; margin-top: 20px; margin-bottom: 20px;">
+    <h2 class="heading" style="color:#007bff; margin-bottom:20px;">Support</h2>
+
+    @using (Html.BeginForm("SendSupportMessage", "InternetBanking", FormMethod.Post))
+    {
+        
+
+        <div class="form-group">
+            <label for="Subject">Subject:</label>
+            @Html.TextBoxFor(m => m.Subject, new { @class = "form-control", placeholder = "Subject of your message" })
+        </div>
+
+        <div class="form-group">
+            <label for="Message">Message:</label>
+            @Html.TextAreaFor(m => m.Message, 5, 40, new { @class = "form-control", placeholder = "Type your message here..." })
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="background-color: #1877F2;">Send Message</button>
+    }
+
+    @if (ViewBag.Status != null)
+    {
+        <div class="alert alert-info" style="margin-top:15px;">
+            @ViewBag.Status
+        </div>
+    }
+</div>
+
+<style>
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .btn {
+        margin-top: 10px;
+    }
+
+    .card {
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+</style>

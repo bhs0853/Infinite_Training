@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BankingDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Accounts">
+    <Key>
+      <PropertyRef Name="Account_Number" />
+    </Key>
+    <Property Name="Customer_Id" Type="int" />
+    <Property Name="Account_Number" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="created_at" Type="date" />
+    <Property Name="Balance" Type="float" />
+  </EntityType>
+  <EntityType Name="Admin_Table">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Email_Id" Type="varchar" MaxLength="30" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChatSupport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="From_Email" Type="varchar" MaxLength="30" />
+    <Property Name="To_Email" Type="varchar" MaxLength="30" />
+    <Property Name="Subject" Type="varchar" MaxLength="50" />
+    <Property Name="Message" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Customer_Id" />
+    </Key>
+    <Property Name="Customer_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="3" />
+    <Property Name="First_Name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Middle_Name" Type="varchar" MaxLength="20" />
+    <Property Name="Last_Name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Father_Name" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Mobile_Number" Type="bigint" Nullable="false" />
+    <Property Name="Email_Id" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Gender" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="Aadhar" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="created_at" Type="date" />
+    <Property Name="Date_Of_Birth" Type="date" Nullable="false" />
+    <Property Name="Residential_Address" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Permanent_Address" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Occupation_Type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Source_Of_Income" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Gross_Annual_Income" Type="float" />
+  </EntityType>
+  <EntityType Name="Debit_Card_Details">
+    <Key>
+      <PropertyRef Name="Debit_Card_Number" />
+    </Key>
+    <Property Name="Account_Number" Type="int" />
+    <Property Name="Debit_Card_Number" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Expiry_Date" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Internet_Banking_Details">
+    <Key>
+      <PropertyRef Name="Email_Id" />
+    </Key>
+    <Property Name="Account_Number" Type="int" />
+    <Property Name="Email_Id" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="login_password" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="transaction_password" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="is_locked" Type="bit" />
+    <Property Name="failed_attempts" Type="int" />
+    <Property Name="locked_time" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OtpRequests">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email_Id" Type="varchar" MaxLength="30" />
+    <Property Name="Otp" Type="int" />
+    <Property Name="created_time" Type="datetime" />
+    <Property Name="is_used" Type="bit" />
+  </EntityType>
+  <EntityType Name="Payees">
+    <Key>
+      <PropertyRef Name="Payee_Id" />
+    </Key>
+    <Property Name="Payee_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="From_Account" Type="int" />
+    <Property Name="To_Account" Type="int" />
+    <Property Name="Beneficiary_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="created_at" Type="date" />
+    <Property Name="Nickname" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="RegisterAccount">
+    <Key>
+      <PropertyRef Name="Service_Reference_Number" />
+    </Key>
+    <Property Name="Service_Reference_Number" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="3" />
+    <Property Name="First_Name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Middle_Name" Type="varchar" MaxLength="20" />
+    <Property Name="Last_Name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Father_Name" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Mobile_Number" Type="bigint" Nullable="false" />
+    <Property Name="Email_Id" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Aadhar" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="Gender" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="Date_Of_Birth" Type="date" Nullable="false" />
+    <Property Name="Residential_Address" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Permanent_Address" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Occupation_Type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Source_Of_Income" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Gross_Annual_Income" Type="float" />
+    <Property Name="Opt_Debit_Card" Type="bit" />
+    <Property Name="Opt_Net_Banking" Type="bit" />
+  </EntityType>
+  <EntityType Name="RejectedAccounts">
+    <Key>
+      <PropertyRef Name="Service_Reference_Number" />
+    </Key>
+    <Property Name="Service_Reference_Number" Type="int" Nullable="false" />
+    <Property Name="Email_Id" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="remarks" Type="varchar" MaxLength="100" />
+    <Property Name="rejected_at" Type="date" />
+  </EntityType>
+  <EntityType Name="Transaction_Details">
+    <Key>
+      <PropertyRef Name="Transaction_Id" />
+    </Key>
+    <Property Name="Transaction_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="From_Account" Type="int" />
+    <Property Name="To_Account" Type="int" />
+    <Property Name="Transaction_Mode" Type="varchar" MaxLength="10" />
+    <Property Name="Transaction_Type" Type="varchar" MaxLength="6" />
+    <Property Name="Amount" Type="int" />
+    <Property Name="Transaction_Date" Type="datetime" />
+    <Property Name="Remarks" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__Accounts__Custom__412EB0B6">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Customer_Id" />
+      </Principal>
+      <Dependent Role="Accounts">
+        <PropertyRef Name="Customer_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Debit_Car__Accou__48CFD27E">
+    <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
+    <End Role="Debit_Card_Details" Type="Self.Debit_Card_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accounts">
+        <PropertyRef Name="Account_Number" />
+      </Principal>
+      <Dependent Role="Debit_Card_Details">
+        <PropertyRef Name="Account_Number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Internet___Accou__02084FDA">
+    <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
+    <End Role="Internet_Banking_Details" Type="Self.Internet_Banking_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accounts">
+        <PropertyRef Name="Account_Number" />
+      </Principal>
+      <Dependent Role="Internet_Banking_Details">
+        <PropertyRef Name="Account_Number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Payees__From_Acc__52593CB8">
+    <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
+    <End Role="Payees" Type="Self.Payees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accounts">
+        <PropertyRef Name="Account_Number" />
+      </Principal>
+      <Dependent Role="Payees">
+        <PropertyRef Name="From_Account" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Payees__To_Accou__534D60F1">
+    <End Role="Accounts" Type="Self.Accounts" Multiplicity="0..1" />
+    <End Role="Payees" Type="Self.Payees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accounts">
+        <PropertyRef Name="Account_Number" />
+      </Principal>
+      <Dependent Role="Payees">
+        <PropertyRef Name="To_Account" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_AdminLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="email" Type="varchar" Mode="In" />
+    <Parameter Name="password" Type="varchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="id" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fn_CustomerLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="email" Type="varchar" Mode="In" />
+    <Parameter Name="login_password" Type="varchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Account_Number" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fn_GetPayee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Payee_Id" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Payee_Id" Type="int" />
+          <Property Name="Beneficiary_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Account_Number" Type="int" />
+          <Property Name="Nickname" Type="varchar" MaxLength="20" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fn_GetStatement" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Account_number" Type="int" Mode="In" />
+    <Parameter Name="from_date" Type="datetime" Mode="In" />
+    <Parameter Name="to_date" Type="datetime" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Transaction_Id" Type="int" />
+          <Property Name="From_Account" Type="int" />
+          <Property Name="To_Account" Type="int" />
+          <Property Name="Transaction_Mode" Type="varchar" MaxLength="50" />
+          <Property Name="Transaction_Type" Type="varchar" MaxLength="6" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="Transaction_Date" Type="datetime" />
+          <Property Name="Remarks" Type="varchar" MaxLength="50" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="Sp_AddPayee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="beneficiary_name" Type="varchar" Mode="In" />
+    <Parameter Name="from_account" Type="int" Mode="In" />
+    <Parameter Name="to_account" Type="int" Mode="In" />
+    <Parameter Name="nickname" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_ChangeLoginPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="account_number" Type="int" Mode="In" />
+    <Parameter Name="old_password" Type="varchar" Mode="In" />
+    <Parameter Name="new_password" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_ChangeTransactionPassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="account_number" Type="int" Mode="In" />
+    <Parameter Name="old_password" Type="varchar" Mode="In" />
+    <Parameter Name="new_password" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_CreateAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Service_Reference_Number" Type="int" Mode="In" />
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Sp_CreateDebitCard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Account_Number" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Sp_CreateInternetBanking" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Account_Number" Type="int" Mode="In" />
+    <Parameter Name="login_password" Type="varchar" Mode="In" />
+    <Parameter Name="transaction_password" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_MakeTransaction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="From_Account" Type="int" Mode="In" />
+    <Parameter Name="To_Account" Type="int" Mode="In" />
+    <Parameter Name="Transaction_Mode" Type="varchar" Mode="In" />
+    <Parameter Name="Transaction_Type" Type="varchar" Mode="In" />
+    <Parameter Name="Amount" Type="int" Mode="In" />
+    <Parameter Name="Transaction_Date" Type="datetime" Mode="In" />
+    <Parameter Name="Remarks" Type="varchar" Mode="In" />
+    <Parameter Name="transaction_password" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_RaiseSupportRequests" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="From_Email" Type="varchar" Mode="In" />
+    <Parameter Name="To_Email" Type="varchar" Mode="In" />
+    <Parameter Name="Subject" Type="varchar" Mode="In" />
+    <Parameter Name="Message" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_Register_Account" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Title" Type="varchar" Mode="In" />
+    <Parameter Name="First_Name" Type="varchar" Mode="In" />
+    <Parameter Name="Middle_Name" Type="varchar" Mode="In" />
+    <Parameter Name="Last_Name" Type="varchar" Mode="In" />
+    <Parameter Name="Father_Name" Type="varchar" Mode="In" />
+    <Parameter Name="Mobile_Number" Type="bigint" Mode="In" />
+    <Parameter Name="Email_Id" Type="varchar" Mode="In" />
+    <Parameter Name="Aadhar" Type="varchar" Mode="In" />
+    <Parameter Name="Gender" Type="varchar" Mode="In" />
+    <Parameter Name="Date_Of_Birth" Type="date" Mode="In" />
+    <Parameter Name="Residential_Address" Type="varchar" Mode="In" />
+    <Parameter Name="Permanent_Address" Type="varchar" Mode="In" />
+    <Parameter Name="Occupation_Type" Type="varchar" Mode="In" />
+    <Parameter Name="Source_Of_Income" Type="varchar" Mode="In" />
+    <Parameter Name="Gross_Annual_Income" Type="float" Mode="In" />
+    <Parameter Name="Opt_Debit_Card" Type="bit" Mode="In" />
+    <Parameter Name="Opt_Net_Banking" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="Sp_RejectAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Service_Reference_Number" Type="int" Mode="In" />
+    <Parameter Name="id" Type="int" Mode="In" />
+    <Parameter Name="Remarks" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="BankingDBModelStoreContainer">
+    <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Admin_Table" EntityType="Self.Admin_Table" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChatSupport" EntityType="Self.ChatSupport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Debit_Card_Details" EntityType="Self.Debit_Card_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Internet_Banking_Details" EntityType="Self.Internet_Banking_Details" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OtpRequests" EntityType="Self.OtpRequests" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payees" EntityType="Self.Payees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RegisterAccount" EntityType="Self.RegisterAccount" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RejectedAccounts" EntityType="Self.RejectedAccounts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transaction_Details" EntityType="Self.Transaction_Details" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Accounts__Custom__412EB0B6" Association="Self.FK__Accounts__Custom__412EB0B6">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Accounts" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Debit_Car__Accou__48CFD27E" Association="Self.FK__Debit_Car__Accou__48CFD27E">
+      <End Role="Accounts" EntitySet="Accounts" />
+      <End Role="Debit_Card_Details" EntitySet="Debit_Card_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Internet___Accou__02084FDA" Association="Self.FK__Internet___Accou__02084FDA">
+      <End Role="Accounts" EntitySet="Accounts" />
+      <End Role="Internet_Banking_Details" EntitySet="Internet_Banking_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Payees__From_Acc__52593CB8" Association="Self.FK__Payees__From_Acc__52593CB8">
+      <End Role="Accounts" EntitySet="Accounts" />
+      <End Role="Payees" EntitySet="Payees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Payees__To_Accou__534D60F1" Association="Self.FK__Payees__To_Accou__534D60F1">
+      <End Role="Accounts" EntitySet="Accounts" />
+      <End Role="Payees" EntitySet="Payees" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

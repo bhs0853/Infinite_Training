@@ -1,0 +1,84 @@
+﻿@model Project.Models.SupportMessage
+
+@{
+    ViewBag.Title = "ReplyToMessage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="cards">
+    <div class="card">
+        <div class="card-headers">Reply to message</div>
+
+        <div class="messagediv">
+            <p><strong>User Email:</strong> @Model.UserEmail</p>
+            <p><strong>Subject:</strong> @Model.Subject</p>
+            <p><strong>Message:</strong> @Model.Message</p>
+            <p><strong>Sent At:</strong> @Model.SentAt</p>
+        </div>
+
+        @using (Html.BeginForm("ReplyToMessage", "Support", FormMethod.Post))
+        {
+            @Html.HiddenFor(model => model.Id)
+
+            <div style="margin:5px;">
+                <label for="reply">Your Reply:</label><br />
+                <textarea name="reply" id="reply" rows="5" cols="60" required></textarea>
+            </div>
+
+            <br />
+            <div class="btn-container">
+                <input type="submit" value="Send Reply" class="btn " />
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .cards {
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+    }
+
+    .card {
+        width: 650px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .card-headers {
+        background-color: #1877F2;
+        color: white;
+        font-size: 24px;
+        font-weight: 600;
+        text-align: center;
+        padding: 20px 10px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .messagediv {
+        margin: 5px;
+    }
+
+    .btn {
+        margin: 5px;
+        background: #1877F2;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .btn:hover {
+            background: #145db2;
+        }
+
+    .btn-container {
+        display: flex;
+        justify-content: center;
+    }
+</style>

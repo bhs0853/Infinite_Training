@@ -1,0 +1,312 @@
+﻿@model Project.Dto.RegisterAccountDto
+@{
+    ViewBag.Title = "Open A Savings Account";
+    Layout = "~/Views/Shared/_Banking.cshtml";
+    ViewBag.NavType = "Newaccountregistrationview";
+}
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-info">@ViewBag.Message</div>
+}
+else
+{
+    <div style="display: flex; justify-content: center; padding: 30px 0; min-height: 100vh;">
+        <div style="width: 800px; background-color: white; padding: 30px; border-radius: 10px; border: 1px solid black;">
+            <h3 style="text-align: center; color: #1877F2; margin-bottom: 30px; font-weight: bold;">Open A Savings Account</h3>
+
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <style>
+                    .form-row {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 15px;
+                    }
+
+                        .form-row label {
+                            width: 200px;
+                            font-weight: bold;
+                            margin-right: 10px;
+                            color: black;
+                        }
+
+                        .form-row input,
+                        .form-row select {
+                            flex: 1;
+                            padding: 5px;
+                            border: 1px solid #ccc;
+                            border-radius: 4px;
+                        }
+
+                    fieldset {
+                        border: 1px solid black;
+                        padding: 20px;
+                        margin-bottom: 20px;
+                    }
+
+                    legend {
+                        font-weight: bold;
+                        color: black;
+                    }
+
+                    .form-check {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 10px;
+                    }
+
+                        .form-check label {
+                            color: black;
+                        }
+
+                        .form-check input {
+                            margin-right: 10px;
+                        }
+
+                    .submit-btn {
+                        background-color: #1877F2;
+                        color: white;
+                        padding: 10px 25px;
+                        border: none;
+                        border-radius: 5px;
+                        font-weight: bold;
+                    }
+
+                        .submit-btn:hover {
+                            background-color: #003366;
+                        }
+
+                    .text-danger {
+                        color: red;
+                        font-size: 0.9em;
+                        margin-left: 10px;
+                    }
+                </style>
+
+                <fieldset>
+                    <legend>Personal Details</legend>
+
+                    <div class="form-row">
+                        <label>Title*</label>
+                        <div>
+                            @Html.RadioButtonFor(m => m.Title, "Mr") Mr.
+                            @Html.RadioButtonFor(m => m.Title, "Mrs") Mrs.
+                            @Html.RadioButtonFor(m => m.Title, "Ms") Ms.
+                        </div>
+                        @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-row">
+                        <label>First Name*</label>
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-row">
+                        <label>Middle Name</label>
+                        @Html.TextBoxFor(m => m.MiddleName, new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-row">
+                        <label>Last Name*</label>
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-row">
+                        <label>Father's Name*</label>
+                        @Html.TextBoxFor(m => m.FatherName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.FatherName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-row">
+                        <label>Mobile Number*</label>
+                        @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control", type = "tel" })
+                        @Html.ValidationMessageFor(m => m.Mobile, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-row">
+                        <label>Email ID</label>
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", type = "email" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-row">
+                        <label>Aadhar Card Number*</label>
+                        @Html.TextBoxFor(m => m.Aadhar, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Aadhar, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-row">
+                        <label>Date of Birth*</label>
+                        @Html.TextBoxFor(m => m.DOB, new { @class = "form-control", type = "date" })
+                        @Html.ValidationMessageFor(m => m.DOB, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-row">
+                        <label>Gender*</label>
+                        @Html.DropDownListFor(m => m.Gender, new SelectList(new[] { "Male", "Female", "Other" }), "-- Select --", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Gender, "", new { @class = "text-danger" })
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Residential Address</legend>
+
+                    <div class="form-row">
+                        <label>Address Line 1*</label>
+                        @Html.TextBoxFor(m => m.ResAddress1, new { @class = "form-control", id = "ResAddress1" })
+                        @Html.ValidationMessageFor(m => m.ResAddress1, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-row">
+                        <label>Address Line 2</label>
+                        @Html.TextBoxFor(m => m.ResAddress2, new { @class = "form-control", id = "ResAddress2" })
+                    </div>
+
+                    <div class="form-row">
+                        <label>Landmark</label>
+                        @Html.TextBoxFor(m => m.ResLandmark, new { @class = "form-control", id = "ResLandmark" })
+                    </div>
+
+                    <div class="form-row">
+                        <label>State*</label>
+                        @Html.TextBoxFor(m => m.ResState, new { @class = "form-control", id = "ResState" })
+                        @Html.ValidationMessageFor(m => m.ResState, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-row">
+                        <label>City*</label>
+                        @Html.TextBoxFor(m => m.ResCity, new { @class = "form-control", id = "ResCity" })
+                        @Html.ValidationMessageFor(m => m.ResCity, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-row">
+                        <label>Pincode*</label>
+                        @Html.TextBoxFor(m => m.ResPincode, new { @class = "form-control", id = "ResPincode" })
+                        @Html.ValidationMessageFor(m => m.ResPincode, "", new { @class = "text-danger" })
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Permanent Address</legend>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="SameAsRes" />
+                        <label class="form-check-label" for="SameAsRes">Permanent Address same as Mailing Address</label>
+                    </div>
+
+                    <div class="form-row">
+                        <label>Address Line 1*</label>
+                        @Html.TextBoxFor(m => m.PerAddress1, new { @class = "form-control", id = "PerAddress1" })
+                        @Html.ValidationMessageFor(m => m.PerAddress1, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-row">
+                        <label>Address Line 2</label>
+                        @Html.TextBoxFor(m => m.PerAddress2, new { @class = "form-control", id = "PerAddress2" })
+                    </div>
+
+                    <div class="form-row">
+                        <label>Landmark</label>
+                        @Html.TextBoxFor(m => m.PerLandmark, new { @class = "form-control", id = "PerLandmark" })
+                    </div>
+
+                    <div class="form-row">
+                        <label>State*</label>
+                        @Html.TextBoxFor(m => m.PerState, new { @class = "form-control", id = "PerState" })
+                        @Html.ValidationMessageFor(m => m.PerState, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-row">
+                        <label>City*</label>
+                        @Html.TextBoxFor(m => m.PerCity, new { @class = "form-control", id = "PerCity" })
+                        @Html.ValidationMessageFor(m => m.PerCity, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-row">
+                        <label>Pincode*</label>
+                        @Html.TextBoxFor(m => m.PerPincode, new { @class = "form-control", id = "PerPincode" })
+                        @Html.ValidationMessageFor(m => m.PerPincode, "", new { @class = "text-danger" })
+                    </div>
+                </fieldset>
+
+                <!-- Occupation Details -->
+                <fieldset>
+                    <legend>Occupation Details</legend>
+
+                    <div class="form-row">
+                        <label>Occupation Type*</label>
+                        @Html.DropDownListFor(m => m.OccupationType, new SelectList(new[] { "Salaried", "Self-employed", "Student", "Retired" }), "-- Select --", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.OccupationType, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-row">
+                        <label>Source of Income*</label>
+                        @Html.TextBoxFor(m => m.SourceIncome, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.SourceIncome, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-row">
+                        <label>Gross Annual Income*</label>
+                        @Html.TextBoxFor(m => m.AnnualIncome, new { @class = "form-control", type = "number" })
+                        @Html.ValidationMessageFor(m => m.AnnualIncome, "", new { @class = "text-danger" })
+                    </div>
+                </fieldset>
+
+                <!-- Debit Card -->
+                <fieldset>
+                    <div class="form-check">
+                        @Html.CheckBoxFor(m => m.DebitCard, new { @class = "form-check-input", id = "DebitCard" })
+                        <label class="form-check-label" for="DebitCard">Opt for Debit Card</label>
+                    </div>
+
+                    <div class="form-check">
+                        @Html.CheckBoxFor(m => m.NetBanking, new { @class = "form-check-input", id = "NetBanking" })
+                        <label class="form-check-label" for="NetBanking">Opt for Net Banking</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="AgreeTerms" required />
+                        <label class="form-check-label" for="AgreeTerms">I agree to the terms and conditions.</label>
+                    </div>
+                </fieldset>
+
+                <div style="text-align:center; margin-top:20px;">
+                    <button type="submit" class="submit-btn">Submit</button>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#SameAsRes').change(function () {
+                if ($(this).is(':checked')) {
+                    $('#PerAddress1').val($('#ResAddress1').val());
+                    $('#PerAddress2').val($('#ResAddress2').val());
+                    $('#PerLandmark').val($('#ResLandmark').val());
+                    $('#PerState').val($('#ResState').val());
+                    $('#PerCity').val($('#ResCity').val());
+                    $('#PerPincode').val($('#ResPincode').val());
+                } else {
+                    $('#PerAddress1').val('');
+                    $('#PerAddress2').val('');
+                    $('#PerLandmark').val('');
+                    $('#PerState').val('');
+                    $('#PerCity').val('');
+                    $('#PerPincode').val('');
+                }
+            });
+        });
+    </script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+}

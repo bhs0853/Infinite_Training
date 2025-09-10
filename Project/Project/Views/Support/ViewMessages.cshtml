@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Project.Models.SupportMessage>
+@{
+    ViewBag.Title = "ViewMessages";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<p>
+    <a href="@Url.Action("ResolvedMessages", "Support")" class="btn ">
+        View Resolved Messages
+    </a>
+</p>
+
+@foreach (var msg in Model)
+{
+    <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
+        <p><strong>From:</strong> @msg.UserEmail</p>
+        <p><strong>Subject:</strong> @msg.Subject</p>
+        <p><strong>Message:</strong> @msg.Message</p>
+        <p><strong>Sent At:</strong>@msg.SentAt</p>
+        <p><strong>Status:</strong> @msg.Status</p>
+
+        @if (msg.Status == "Pending")
+        {
+            <p style="color:orange;">This message is pending a reply.</p>
+            <a href="@Url.Action("ReplyToMessage", "Support", new { id = msg.Id})">Reply to this message</a>
+        }
+        else
+        {
+            <p><strong>Admin Reply:</strong> @msg.AdminReply</p>
+            <p><strong>Replied At:</strong> @msg.RepliedAt</p>
+        }
+    </div>
+}
+
+
+

@@ -1,0 +1,138 @@
+﻿@model Project.Dto.TransactionDto
+
+@{
+    ViewBag.Title = "Transfer";
+    Layout = "~/Views/Shared/_Banking.cshtml";
+    ViewBag.NavType = "UserLoggedIn";
+    ViewBag.Account = Session["Account"];
+}
+
+<div class="transfer-wrapper">
+    <h2 class="section-title">Transfer Funds</h2>
+
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-info mt-3">@ViewBag.Message</div>
+    }
+
+    @using (Html.BeginForm("Transfer", "Transaction", FormMethod.Post))
+    {
+        <div class="form-grid">
+            <div class="form-group">
+                @Html.Label("Account Number")
+                @Html.TextBoxFor(m => m.To_Account, new { @class = "form-control", placeholder = "Enter recipient account number", required = "required" })
+                <a href="@Url.Action("GetAllPayees", "Transaction")" class="btn btn-link small-btn">View Beneficiaries</a>
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Amount")
+                @Html.TextBoxFor(m => m.Amount, new { @class = "form-control", placeholder = "Enter amount", required = "required"})
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Transaction Mode")
+                <label>
+                @Html.DropDownListFor(m => m.Transaction_Mode, new SelectList(new[] { "NEFT", "RTGS", "IMPS" }), "Select Mode", new { @class = "form-control", required = "required" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Transaction Password")
+                <input type="password" name="Transaction_Password" class="form-control" placeholder="Enter transaction password" required />
+            </div>
+
+            <div class="form-group full-width">
+                @Html.LabelFor(m => m.Remarks)
+                @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control", placeholder = "Add remarks" })
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn primary-btn">Initiate Transfer</button>
+            <button type="reset" class="btn secondary-btn">Reset</button>
+        </div>
+    }
+</div>
+
+<style>
+    .transfer-wrapper {
+        background-color: white;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        margin-top: 20px;
+    }
+
+    .section-title {
+        color: #1877F2;
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+    .form-control {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .form-group.full-width {
+        grid-column: span 2;
+    }
+
+    .form-actions {
+        margin-top: 20px;
+        display: flex;
+        gap: 15px;
+    }
+
+    .primary-btn {
+        background-color: #1877F2;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+        .primary-btn:hover {
+            background-color: #145dbf;
+        }
+
+    .secondary-btn {
+        background-color: #f0f0f0;
+        color: #333;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+        .secondary-btn:hover {
+            background-color: #e0e0e0;
+        }
+
+    .small-btn {
+        font-size: 13px;
+        margin-top: 5px;
+        padding: 4px 8px;
+        display: inline-block;
+    }
+</style>

@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BankingDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="fn_AdminLogin_Result">
+    <Property Name="id" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fn_CustomerLogin_Result">
+    <Property Name="Account_Number" Type="Int32" />
+  </ComplexType>
+  <ComplexType Name="fn_GetPayee_Result">
+    <Property Name="Payee_Id" Type="Int32" />
+    <Property Name="Beneficiary_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Account_Number" Type="Int32" />
+    <Property Name="Nickname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </ComplexType>
+  <ComplexType Name="fn_GetStatement_Result">
+    <Property Name="Transaction_Id" Type="Int32" />
+    <Property Name="From_Account" Type="Int32" />
+    <Property Name="To_Account" Type="Int32" />
+    <Property Name="Transaction_Mode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Transaction_Type" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="Amount" Type="Int32" />
+    <Property Name="Transaction_Date" Type="DateTime" />
+    <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Balance" Type="Int32" />
+  </ComplexType>
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="Account_Number" />
+    </Key>
+    <Property Name="Customer_Id" Type="Int32" />
+    <Property Name="Account_Number" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="created_at" Type="DateTime" Precision="0" />
+    <Property Name="Balance" Type="Double" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__Accounts__Custom__4CA06362" FromRole="Accounts" ToRole="Customer" />
+    <NavigationProperty Name="Debit_Card_Details" Relationship="Self.FK__Debit_Car__Accou__5441852A" FromRole="Accounts" ToRole="Debit_Card_Details" />
+    <NavigationProperty Name="Internet_Banking_Details" Relationship="Self.FK__Internet___Accou__29221CFB" FromRole="Accounts" ToRole="Internet_Banking_Details" />
+    <NavigationProperty Name="Payees" Relationship="Self.FK__Payees__From_Acc__5DCAEF64" FromRole="Accounts" ToRole="Payees" />
+    <NavigationProperty Name="Payees1" Relationship="Self.FK__Payees__To_Accou__5EBF139D" FromRole="Accounts" ToRole="Payees" />
+  </EntityType>
+  <EntityType Name="Admin_Table">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email_Id" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Customer_Id" />
+    </Key>
+    <Property Name="Customer_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="First_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Middle_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Last_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Father_Name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mobile_Number" Type="Int64" Nullable="false" />
+    <Property Name="Email_Id" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Aadhar" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Precision="0" />
+    <Property Name="Date_Of_Birth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Residential_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Permanent_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Occupation_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Source_Of_Income" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gross_Annual_Income" Type="Double" />
+    <NavigationProperty Name="Accounts" Relationship="Self.FK__Accounts__Custom__4CA06362" FromRole="Customer" ToRole="Accounts" />
+  </EntityType>
+  <EntityType Name="Debit_Card_Details">
+    <Key>
+      <PropertyRef Name="Debit_Card_Number" />
+    </Key>
+    <Property Name="Account_Number" Type="Int32" />
+    <Property Name="Debit_Card_Number" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Expiry_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Account" Relationship="Self.FK__Debit_Car__Accou__5441852A" FromRole="Debit_Card_Details" ToRole="Accounts" />
+  </EntityType>
+  <EntityType Name="Internet_Banking_Details">
+    <Key>
+      <PropertyRef Name="Email_Id" />
+    </Key>
+    <Property Name="Account_Number" Type="Int32" />
+    <Property Name="Email_Id" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="login_password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="transaction_password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="is_locked" Type="Boolean" />
+    <Property Name="failed_attempts" Type="Int32" />
+    <Property Name="locked_time" Type="DateTime" Precision="3" />
+    <Property Name="last_login" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Account" Relationship="Self.FK__Internet___Accou__29221CFB" FromRole="Internet_Banking_Details" ToRole="Accounts" />
+  </EntityType>
+  <EntityType Name="OtpRequest">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email_Id" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Otp" Type="Int32" />
+    <Property Name="created_time" Type="DateTime" Precision="3" />
+    <Property Name="is_used" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Payee">
+    <Key>
+      <PropertyRef Name="Payee_Id" />
+    </Key>
+    <Property Name="Payee_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="From_Account" Type="Int32" />
+    <Property Name="To_Account" Type="Int32" />
+    <Property Name="Beneficiary_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Precision="0" />
+    <Property Name="Nickname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Account" Relationship="Self.FK__Payees__From_Acc__5DCAEF64" FromRole="Payees" ToRole="Accounts" />
+    <NavigationProperty Name="Account1" Relationship="Self.FK__Payees__To_Accou__5EBF139D" FromRole="Payees" ToRole="Accounts" />
+  </EntityType>
+  <EntityType Name="RegisterAccount">
+    <Key>
+      <PropertyRef Name="Service_Reference_Number" />
+    </Key>
+    <Property Name="Service_Reference_Number" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="First_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Middle_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Last_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Father_Name" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mobile_Number" Type="Int64" Nullable="false" />
+    <Property Name="Email_Id" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Aadhar" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date_Of_Birth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Residential_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Permanent_Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Occupation_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Source_Of_Income" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gross_Annual_Income" Type="Double" />
+    <Property Name="Opt_Debit_Card" Type="Boolean" />
+    <Property Name="Opt_Net_Banking" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="RejectedAccount">
+    <Key>
+      <PropertyRef Name="Service_Reference_Number" />
+    </Key>
+    <Property Name="Service_Reference_Number" Type="Int32" Nullable="false" />
+    <Property Name="Email_Id" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="rejected_at" Type="DateTime" Precision="0" />
+    <Property Name="remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="SupportMessage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Subject" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SentAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AdminReply" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="RepliedAt" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Transaction_Details">
+    <Key>
+      <PropertyRef Name="Transaction_Id" />
+    </Key>
+    <Property Name="Transaction_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="From_Account" Type="Int32" />
+    <Property Name="To_Account" Type="Int32" />
+    <Property Name="Transaction_Mode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Transaction_Type" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="Amount" Type="Int32" />
+    <Property Name="Balance" Type="Int32" />
+    <Property Name="Transaction_Date" Type="DateTime" Precision="3" />
+    <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__Accounts__Custom__4CA06362">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Accounts" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="Customer_Id" />
+      </Principal>
+      <Dependent Role="Accounts">
+        <PropertyRef Name="Customer_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Debit_Car__Accou__5441852A">
+    <End Role="Accounts" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="Debit_Card_Details" Type="Self.Debit_Card_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accounts">
+        <PropertyRef Name="Account_Number" />
+      </Principal>
+      <Dependent Role="Debit_Card_Details">
+        <PropertyRef Name="Account_Number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Internet___Accou__29221CFB">
+    <End Role="Accounts" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="Internet_Banking_Details" Type="Self.Internet_Banking_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accounts">
+        <PropertyRef Name="Account_Number" />
+      </Principal>
+      <Dependent Role="Internet_Banking_Details">
+        <PropertyRef Name="Account_Number" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Payees__From_Acc__5DCAEF64">
+    <End Role="Accounts" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="Payees" Type="Self.Payee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accounts">
+        <PropertyRef Name="Account_Number" />
+      </Principal>
+      <Dependent Role="Payees">
+        <PropertyRef Name="From_Account" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Payees__To_Accou__5EBF139D">
+    <End Role="Accounts" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="Payees" Type="Self.Payee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accounts">
+        <PropertyRef Name="Account_Number" />
+      </Principal>
+      <Dependent Role="Payees">
+        <PropertyRef Name="To_Account" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BankingDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accounts" EntityType="Self.Account" />
+    <EntitySet Name="Admin_Table" EntityType="Self.Admin_Table" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Debit_Card_Details" EntityType="Self.Debit_Card_Details" />
+    <EntitySet Name="Internet_Banking_Details" EntityType="Self.Internet_Banking_Details" />
+    <EntitySet Name="OtpRequests" EntityType="Self.OtpRequest" />
+    <EntitySet Name="Payees" EntityType="Self.Payee" />
+    <EntitySet Name="RegisterAccounts" EntityType="Self.RegisterAccount" />
+    <EntitySet Name="RejectedAccounts" EntityType="Self.RejectedAccount" />
+    <EntitySet Name="SupportMessages" EntityType="Self.SupportMessage" />
+    <EntitySet Name="Transaction_Details" EntityType="Self.Transaction_Details" />
+    <AssociationSet Name="FK__Accounts__Custom__4CA06362" Association="Self.FK__Accounts__Custom__4CA06362">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Accounts" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Debit_Car__Accou__5441852A" Association="Self.FK__Debit_Car__Accou__5441852A">
+      <End Role="Accounts" EntitySet="Accounts" />
+      <End Role="Debit_Card_Details" EntitySet="Debit_Card_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Internet___Accou__29221CFB" Association="Self.FK__Internet___Accou__29221CFB">
+      <End Role="Accounts" EntitySet="Accounts" />
+      <End Role="Internet_Banking_Details" EntitySet="Internet_Banking_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Payees__From_Acc__5DCAEF64" Association="Self.FK__Payees__From_Acc__5DCAEF64">
+      <End Role="Accounts" EntitySet="Accounts" />
+      <End Role="Payees" EntitySet="Payees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Payees__To_Accou__5EBF139D" Association="Self.FK__Payees__To_Accou__5EBF139D">
+      <End Role="Accounts" EntitySet="Accounts" />
+      <End Role="Payees" EntitySet="Payees" />
+    </AssociationSet>
+    <FunctionImport Name="fn_AdminLogin" IsComposable="true" ReturnType="Collection(BankingDBModel.fn_AdminLogin_Result)">
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="fn_CustomerLogin" IsComposable="true" ReturnType="Collection(BankingDBModel.fn_CustomerLogin_Result)">
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="login_password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="fn_GetPayee" IsComposable="true" ReturnType="Collection(BankingDBModel.fn_GetPayee_Result)">
+      <Parameter Name="Payee_Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="fn_GetStatement" IsComposable="true" ReturnType="Collection(BankingDBModel.fn_GetStatement_Result)">
+      <Parameter Name="Account_number" Mode="In" Type="Int32" />
+      <Parameter Name="from_date" Mode="In" Type="DateTime" />
+      <Parameter Name="to_date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_AddPayee">
+      <Parameter Name="beneficiary_name" Mode="In" Type="String" />
+      <Parameter Name="from_account" Mode="In" Type="Int32" />
+      <Parameter Name="to_account" Mode="In" Type="Int32" />
+      <Parameter Name="nickname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_ChangeLoginPassword">
+      <Parameter Name="account_number" Mode="In" Type="Int32" />
+      <Parameter Name="old_password" Mode="In" Type="String" />
+      <Parameter Name="new_password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_ChangeTransactionPassword">
+      <Parameter Name="account_number" Mode="In" Type="Int32" />
+      <Parameter Name="old_password" Mode="In" Type="String" />
+      <Parameter Name="new_password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_CreateAccount">
+      <Parameter Name="Service_Reference_Number" Mode="In" Type="Int32" />
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_CreateDebitCard">
+      <Parameter Name="Account_Number" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_CreateInternetBanking">
+      <Parameter Name="Account_Number" Mode="In" Type="Int32" />
+      <Parameter Name="login_password" Mode="In" Type="String" />
+      <Parameter Name="transaction_password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_MakeTransaction" ReturnType="Collection(Int32)">
+      <Parameter Name="From_Account" Mode="In" Type="Int32" />
+      <Parameter Name="To_Account" Mode="In" Type="Int32" />
+      <Parameter Name="Transaction_Mode" Mode="In" Type="String" />
+      <Parameter Name="Amount" Mode="In" Type="Int32" />
+      <Parameter Name="Transaction_Date" Mode="In" Type="DateTime" />
+      <Parameter Name="Remarks" Mode="In" Type="String" />
+      <Parameter Name="transaction_password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_RaiseSupportMessage" ReturnType="Collection(Int32)">
+      <Parameter Name="UserEmail" Mode="In" Type="String" />
+      <Parameter Name="Subject" Mode="In" Type="String" />
+      <Parameter Name="Message" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_Register_Account" ReturnType="Collection(Int32)">
+      <Parameter Name="Title" Mode="In" Type="String" />
+      <Parameter Name="First_Name" Mode="In" Type="String" />
+      <Parameter Name="Middle_Name" Mode="In" Type="String" />
+      <Parameter Name="Last_Name" Mode="In" Type="String" />
+      <Parameter Name="Father_Name" Mode="In" Type="String" />
+      <Parameter Name="Mobile_Number" Mode="In" Type="Int64" />
+      <Parameter Name="Email_Id" Mode="In" Type="String" />
+      <Parameter Name="Aadhar" Mode="In" Type="String" />
+      <Parameter Name="Gender" Mode="In" Type="String" />
+      <Parameter Name="Date_Of_Birth" Mode="In" Type="DateTime" />
+      <Parameter Name="Residential_Address" Mode="In" Type="String" />
+      <Parameter Name="Permanent_Address" Mode="In" Type="String" />
+      <Parameter Name="Occupation_Type" Mode="In" Type="String" />
+      <Parameter Name="Source_Of_Income" Mode="In" Type="String" />
+      <Parameter Name="Gross_Annual_Income" Mode="In" Type="Double" />
+      <Parameter Name="Opt_Debit_Card" Mode="In" Type="Boolean" />
+      <Parameter Name="Opt_Net_Banking" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_RejectAccount">
+      <Parameter Name="Service_Reference_Number" Mode="In" Type="Int32" />
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="Remarks" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

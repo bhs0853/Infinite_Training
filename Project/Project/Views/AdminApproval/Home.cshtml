@@ -1,0 +1,111 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div style="background-color: #dff0d8; color: #3c763d; font-weight: bold; padding: 10px 0;margin-top:10px">
+    <marquee behavior="scroll" direction="left" scrollamount="6">
+        🎉 Welcome to Online Banking! Enjoy secure, fast, and reliable services. 💳 Open your account today and get exclusive benefits! 🚀
+    </marquee>
+</div>
+<div id="bankingCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#bankingCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#bankingCarousel" data-slide-to="1"></li>
+        <li data-target="#bankingCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <div class="carousel-inner">
+        <div class="item active">
+            <img src="~/Content/Images/image.png" alt="10 Million Users" class="img-responsive">
+          
+        </div>
+
+        <div class="item">
+            <img src="~/Content/Images/image (1).png" alt="100 Investors" class="img-responsive">
+ 
+        </div>
+
+        <div class="item">
+            <img src="~/Content/Images/image (2).png" alt="Certified Growth" class="img-responsive">
+            <div class="carousel-caption">
+                <h3>Certified Growth</h3>
+                <p>Recognized as a fast-growing digital bank</p>
+            </div>
+        </div>
+    </div>
+
+    <a class="left carousel-control" href="#bankingCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#bankingCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+</div>
+<div class="dashboard-row">
+    <div class="dashboard-card bg-info text-white">
+        <h4>Applicants Awaiting Approval</h4>
+        <p><span id="approvalCount">Loading...</span> pending</p>
+    </div>
+    <div class="dashboard-card bg-success text-dark">
+        <h4>Customer Count</h4>
+        <p><span id="customerCount">Loading...</span> Customers</p>
+    </div>
+    <div class="dashboard-card bg-warning text-dark">
+        <h4>Support Messages Pending</h4>
+        <p><span id="messageCount">Loading...</span> unread messages</p>
+    </div>
+</div>
+
+<style>
+    .dashboard-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 30px;
+        margin: 30px auto;
+        max-width: 1400px;
+        padding: 0 30px;
+    }
+
+    .dashboard-card {
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        padding: 20px;
+        height: 200px;
+        flex: 1 1 calc(33.333% - 30px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-width: 280px;
+    }
+
+        .dashboard-card h4 {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .dashboard-card p {
+            font-size: 18px;
+            margin: 0;
+        }
+</style>
+
+
+
+
+<style>
+    #bankingCarousel .carousel-inner > .item > img {
+        width: 100%;
+        height: auto;
+        max-height: 500px; 
+        object-fit: cover;
+    }
+
+    #bankingCarousel {
+        margin-top: 10px; 
+    }
+</style>
+

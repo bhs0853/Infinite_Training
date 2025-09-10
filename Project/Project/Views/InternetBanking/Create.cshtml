@@ -1,0 +1,72 @@
+﻿@{ ViewBag.Title = "Create Internet Banking";
+    Layout = "~/Views/Shared/_Banking.cshtml";
+    ViewBag.NavType = "Userloginview";
+    }
+
+<h2>Activate Internet Banking</h2>
+
+<div style="display: flex; gap: 40px; margin-top: 20px;">
+    
+    <div style="flex: 1; border-right: 1px solid #ccc; padding-right: 20px;">
+        <h4>Account Setup</h4>
+        <p>Enter your account number and set secure passwords to activate internet banking.</p>
+    </div>
+
+  
+    <div style="flex: 2;">
+        <form method="post" onsubmit="return validatePasswords();">
+            <div class="form-group">
+                <label>Account Number:</label>
+                <input type="number" name="accountNo" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+                <label>Login Password:</label>
+                <input type="password" name="loginPassword" id="loginPassword" class="form-control" required oninput="checkStrength(this.value, 'loginStrength')" />
+                <small id="loginStrength" class="form-text text-muted"></small>
+            </div>
+
+            <div class="form-group">
+                <label>Transaction Password:</label>
+                <input type="password" name="transactionPassword" id="transactionPassword" class="form-control" required oninput="checkStrength(this.value, 'txnStrength')" />
+                <small id="txnStrength" class="form-text text-muted"></small>
+            </div>
+
+            <div style="margin-top: 15px;">
+                <button type="submit" class="btn btn-primary">Activate</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+        </form>
+
+        @if (ViewBag.Message != null)
+        {
+<div class="alert alert-info mt-3">@ViewBag.Message</div>}
+    </div>
+</div>
+
+@section scripts {
+    <script>function checkStrength(password, elementId) {
+        const strengthText = document.getElementById(elementId);
+        if (password.length < 6) {
+            strengthText.textContent = "Weak (min 6 characters)";
+            strengthText.style.color = "red";
+        } else if (password.match(/[A-Z]/) && password.match(/[0-9]/) && password.length >= 8) {
+            strengthText.textContent = "Strong";
+            strengthText.style.color = "green";
+        } else {
+            strengthText.textContent = "Medium (add uppercase and numbers)";
+            strengthText.style.color = "orange";
+        }
+    }
+
+    function validatePasswords() {
+        const login = document.getElementById("loginPassword").value;
+        const txn = document.getElementById("transactionPassword").value;
+
+        if (login === txn) {
+            alert("Login and Transaction passwords should not be the same.");
+            return false;
+        }
+        return true;
+    }</script>
+}

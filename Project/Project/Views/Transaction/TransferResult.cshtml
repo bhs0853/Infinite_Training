@@ -1,0 +1,58 @@
+﻿@model Project.Models.Transaction_Details
+@{ ViewBag.Title = "Transfer Result";
+    ViewBag.NavType = "UserLoggedIn";
+    Layout = "~/Views/Shared/_Banking.cshtml"; }
+
+<div class="row" style="margin-top: 80px;">
+
+    <!-- Main Content -->
+    <div class="col-md-9">
+        <h2>Transfer Result</h2>
+
+        @if (Model != null)
+        {
+<div class="alert alert-success">
+    Transaction completed successfully!
+</div>
+
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Transaction ID</th>
+                        <td>@Model.Transaction_Id</td>
+                    </tr>
+                    <tr>
+                        <th>From Account</th>
+                        <td>@Model.From_Account</td>
+                    </tr>
+                    <tr>
+                        <th>To Account</th>
+                        <td>@Model.To_Account</td>
+                    </tr>
+                    <tr>
+                        <th>Amount</th>
+                        <td>@Model.Amount</td>
+                    </tr>
+                    <tr>
+                        <th>Mode</th>
+                        <td>@Model.Transaction_Mode</td>
+                    </tr>
+                    <tr>
+                        <th>Type</th>
+                        <td>@Model.Transaction_Type</td>
+                    </tr>
+                    <tr>
+                        <th>Date</th>
+                        <td>@Model.Transaction_Date</td>
+                    </tr>
+                    <tr>
+                        <th>Remarks</th>
+                        <td>@Model.Remarks</td>
+                    </tr>
+                </table> }
+            else
+            {
+<div class="alert alert-danger">
+    Transaction failed or no data available.
+</div>}
+    </div>
+</div>

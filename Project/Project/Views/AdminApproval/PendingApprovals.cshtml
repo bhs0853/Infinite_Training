@@ -1,0 +1,204 @@
+﻿@model IEnumerable<Project.Models.RegisterAccount>
+
+@{
+    ViewBag.Title = "PendingApprovals";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card" style="width:100%;height:100%;">
+    <div class="card" style="border:1px solid #ccc; border-radius:5px;">
+        <div class="card-headers">Pending Approvals</div>
+
+        <table class="table table-bordered table-striped text-center">
+            <thead class="table-primary">
+                <tr>
+                    <th>Service Ref No</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.Service_Reference_Number</td>
+                        <td>@user.First_Name @user.Last_Name</td>
+                        <td>@user.Email_Id</td>
+                        <td>@user.Mobile_Number</td>
+
+                        <td class="action-col">
+                            @Html.ActionLink("View Details", "ViewDetails", new { id = user.Service_Reference_Number }, new { @class = "btn btn-info btn-sm" })
+                            @Html.ActionLink("Approve", "Approve", new { id = user.Service_Reference_Number }, new { @class = "btn btn-success btn-sm" })
+
+                            @using (Html.BeginForm("Reject", "AdminApproval", FormMethod.Post, new { @class = "reject-form", onsubmit = "return validateRejectForm(this);" }))
+                            {
+                                @Html.Hidden("serviceReferenceNumber", user.Service_Reference_Number)
+                                @Html.Hidden("id", 1)
+                                <input type="text" name="remarks" placeholder="Enter remarks"
+                                       class="form-control form-control-sm"
+                                       style="width:150px; margin-right:5px;" />
+                                <input type="submit" value="Reject" class="btn btn-danger btn-sm" />
+                            }
+                        </td>
+
+
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    function validateRejectForm(form) {
+        var remarks = form.querySelector("input[name='remarks']");
+        if (!remarks.value.trim()) {
+            showErrorModal("Please give reason to reject");
+            remarks.focus();
+            return false; 
+        }
+        return true; 
+    }
+
+    function showErrorModal(message) {
+        document.getElementById("errorMessage").innerText = message;
+        document.getElementById("errorModal").style.display = "flex"; 
+    }
+
+    function closeErrorModal() {
+        document.getElementById("errorModal").style.display = "none"; 
+    }
+</script>
+
+<style>
+    .card-headers {
+        background-color: #1877F2;
+        color: white;
+        font-size: 24px;
+        font-weight: 600;
+        text-align: center;
+        padding: 20px 10px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    
+    .btn-success {
+        background-color: green;
+        color: white;
+    }
+
+    .btn-danger {
+        background-color: red;
+        border: none;
+    }
+
+    .btn-info {
+        background-color: #1877F2;
+        border: none;
+    }
+
+
+    .action-col {
+        display: flex;
+        gap: 8px; 
+        align-items: center; 
+    }
+
+    .reject-form {
+        display: flex; 
+        flex-direction: row;
+        align-items: center;
+        margin: 0;
+    }
+
+
+   
+    .modal-overlay {
+        display: none; 
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+    }
+
+   
+    .modal-card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        width: 380px;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        text-align: center;
+        animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .modal-header {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #d9534f; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .warning-icon {
+        font-size: 26px;
+        color: #d9534f;
+    }
+
+    .modal-body {
+        margin-bottom: 15px;
+        font-size: 16px;
+        color: #333;
+    }
+
+    .modal-footer button {
+        padding: 8px 18px;
+        background-color: #1877F2;
+        color: white;
+        border: none;
+        border-radius: 5px;
+    }
+
+        .modal-footer button:hover {
+            background-color: #145dbf;
+        }
+
+   
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+</style>
+<div id="errorModal" class="modal-overlay">
+    <div class="modal-card">
+        <div class="modal-header">
+            <span class="warning-icon">⚠️</span> Validation Error
+        </div>
+        <div class="modal-body">
+            <p id="errorMessage">Please give reason to reject</p>
+        </div>
+        <div class="modal-footer">
+            <button onclick="closeErrorModal()" class="btn btn-primary">OK</button>
+        </div>
+    </div>
+</div>
+

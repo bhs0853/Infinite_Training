@@ -1,0 +1,14 @@
+﻿@{ ViewBag.Title = "Verify OTP"; }
+
+<h2>Verify OTP</h2>
+<form method="post">
+    <label>Email:</label>
+    <input type="email" name="email" required />
+
+    <label>OTP:</label>
+    <input type="text" name="otp" required />
+
+    <button type="submit">Verify</button>
+</form>
+
+<p>@ViewBag.Message</p>

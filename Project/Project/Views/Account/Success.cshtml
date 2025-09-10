@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Success";
+    ViewBag.NavType = "Newaccountregistrationview";
+    Layout = "~/Views/Shared/_Banking.cshtml";
+}
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm border-success">
+                <div class="card-header bg-success text-white text-center">
+                    <h3>Success</h3>
+                </div>
+                <div class="card-body text-center">
+                    <p class="lead">@TempData["Message"]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

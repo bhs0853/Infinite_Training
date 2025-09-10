@@ -1,0 +1,34 @@
+﻿@model Project.Models.Payee
+@{ ViewBag.Title = "Payee Details";
+    Layout = "~/Views/Shared/_Banking.cshtml";
+    ViewBag.NavType = "UserLoggedIn";
+    ViewBag.Account = Session["Account"];}
+<h2>Payee Details</h2>
+
+@if (Model != null)
+{
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Payee ID</th>
+        <td>@Model.Payee_Id</td>
+    </tr>
+    <tr>
+        <th>Beneficiary Name</th>
+        <td>@Model.Beneficiary_Name</td>
+    </tr>
+    <tr>
+        <th>Account Number</th>
+        <td>@Model.To_Account</td>
+    </tr>
+    <tr>
+        <th>Nickname</th>
+        <td>@Model.Nickname</td>
+    </tr>
+    <tr>
+        <th>Created At</th>
+        <td>@Model.created_at</td>
+    </tr>
+</table> }
+            else
+            {
+<p>@ViewBag.Message</p>}

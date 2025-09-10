@@ -1,0 +1,20 @@
+﻿
+
+
+@{ ViewBag.Title = "Access Denied";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";}
+
+<div class="container text-center" style="margin-top: 100px;">
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            <h2><span class="glyphicon glyphicon-lock"></span> Access Denied</h2>
+        </div>
+        <div class="panel-body">
+            <p class="lead">You do not have permission to view this page.</p>
+            <p>Please contact your administrator if you believe this is an error.</p>
+            @Html.ActionLink("Go to Admin Login", "AdminLogin", "AdminApproval", null, new { @class = "btn btn-primary mt-3" })
+
+        </div>
+    </div>
+</div>
+

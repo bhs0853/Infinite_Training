@@ -1,0 +1,41 @@
+﻿@model List<Project.Models.Payee>
+@*@model IEnumerable<Project.Models.Payee>*@
+
+@{
+    ViewBag.Title = "My Beneficiaries";
+    Layout = "~/Views/Shared/_Banking.cshtml";
+    ViewBag.NavType = "UserLoggedIn";
+    ViewBag.Account = Session["Account"];
+}
+
+<div class="row" style="margin-top: 30px;">
+    <!-- Main Content -->
+    <div class="col-md-12">
+        <h2>My Beneficiaries</h2>
+
+        @if (Model != null && Model.Any())
+        {
+            <div class="row" style="display: flex; flex-wrap:wrap;">
+                @foreach (var payee in Model)
+                {
+                    <div class="col-md-5" style="margin: 5px">
+                        <div class="card shadow-sm" style="border: 1px solid #ddd; padding: 15px; border-radius: 8px; background-color:white;">
+                            <h4>@payee.Beneficiary_Name</h4>
+                            <p><strong>Account No:</strong> @payee.To_Account</p>
+                            <p><strong>Nickname:</strong> @payee.Nickname</p>
+                            <p><strong>Added On:</strong> @payee.created_at.ToString().Substring(0, 10)</p>
+                            <div>
+                                <a href="@Url.Action("Transfer", "Transaction", new { toAccount = payee.To_Account, nickname = payee.Nickname })" class="btn btn-primary btn-sm" style="background-color: #1877F2;">Transfer</a>
+
+                                <a href="@Url.Action("DeletePayee", "Transaction", new { toAccount = payee.To_Account })" class="btn btn-danger btn-sm">Delete</a>
+
+                            </div>
+
+                        </div>
+                    </div>          }
+            </div> }
+        else
+        {
+            <div class="alert alert-info">No payees found. Add one to start transferring.</div>}
+    </div>
+</div>

@@ -1,0 +1,113 @@
+﻿@model Project.Models.Payee
+@{
+    ViewBag.Title = "Add Payee";
+    Layout = "~/Views/Shared/_Banking.cshtml";
+    ViewBag.NavType = "UserLoggedIn";
+    ViewBag.Account = Session["Account"];
+}
+
+<style>
+    .form-card {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-title {
+        font-weight: 600;
+        margin-bottom: 30px;
+        color: #333;
+    }
+
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .form-group {
+        flex: 1 1 45%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group label {
+        margin-bottom: 6px;
+        font-weight: 500;
+    }
+
+    .form-control {
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+
+    .form-actions {
+        margin-top: 30px;
+        display: flex;
+        justify-content: flex-start;
+        gap: 15px;
+    }
+
+    .btn-primary, .btn-default {
+        border-radius: 6px;
+        padding: 10px 20px;
+    }
+    .btn-primary {
+        background: #1877F2;
+    }
+
+    .alert-info {
+        margin-top: 20px;
+        border-radius: 6px;
+    }
+</style>
+
+<div class="row" style="margin: 20px 0px 0px 60px;">
+    <div class="col-md-11">
+        <div class="form-card">
+            <h2 class="form-title">Add Beneficiary</h2>
+
+            @if (ViewBag.Message != null)
+            {
+                <div class="alert alert-info mt-3">@ViewBag.Message</div>
+            }
+
+            @using (Html.BeginForm("AddPayee", "Transaction", FormMethod.Post))
+            {
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Beneficiary Name</label>
+                        @Html.TextBoxFor(m => m.Beneficiary_Name, new { @class = "form-control", placeholder = "Enter beneficiary name" })
+                    </div>
+
+                    <div class="form-group">
+                        <label> Account Number</label>
+                        @Html.TextBoxFor(m => m.To_Account, new { @class = "form-control", placeholder = "Enter account number" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Email")
+                        <input type="email" class="form-control" placeholder="Enter email address" />
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Nickname)
+                        @Html.TextBoxFor(m => m.Nickname, new { @class = "form-control", placeholder = "Optional nickname" })
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                    <button type="reset" class="btn btn-default">Reset</button>
+                </div>
+            }
+
+            @if (TempData["Message"] != null)
+            {
+                <div class="alert alert-info">@TempData["Message"]</div>
+            }
+        </div>
+    </div>
+</div>

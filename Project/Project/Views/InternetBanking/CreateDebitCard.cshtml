@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Create Debit Card";
+    Layout = "~/Views/Shared/_Banking.cshtml";
+    ViewBag.NavType = "UserLoggedIn";
+    ViewBag.Account = Session["Account"];
+}
+<h2>Create Debit Card</h2>
+ 
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-info mt-3">@ViewBag.Message</div> }
+ 
+@using (Html.BeginForm("CreateDebitCard", "InternetBanking", FormMethod.Get))
+{
+    <div>
+        Account Number: <input type="text" name="accountNo" />
+    </div>
+    <button type="submit">Generate Debit Card</button>
+}

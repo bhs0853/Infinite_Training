@@ -1,0 +1,30 @@
+﻿@model Project.Models.Account
+@{ ViewBag.Title = "Account Summary";
+    Layout = "~/Views/Shared/_Banking.cshtml";
+    ViewBag.NavType = "UserLoggedIn";
+    ViewBag.Account = Session["Account"];}
+<h2>Account Details</h2>
+
+@if (Model != null)
+{
+<table border="1">
+    <tr>
+        <th>Account Number</th>
+        <td>@Model.Account_Number</td>
+    </tr>
+    <tr>
+        <th>Customer ID</th>
+        <td>@Model.Customer_Id</td>
+    </tr>
+    <tr>
+        <th>Balance</th>
+        <td>@Model.Balance</td>
+    </tr>
+    <tr>
+        <th>Created At</th>
+        <td>@Model.created_at</td>
+    </tr>
+</table> }
+            else
+            {
+<p>@ViewBag.Message</p>}

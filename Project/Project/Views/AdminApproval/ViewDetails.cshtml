@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "ViewDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card" style="width:100%;height:100%;">
+    <div class="card" style="border:1px solid #ccc; border-radius:5px;">
+        <div class="card-headers">View Details</div>
+        <table class="table border=1">
+            <tr><th>Service Reference Number</th><td>@Model.Service_Reference_Number</td></tr>
+            <tr><th>Title</th><td>@Model.Title</td></tr>
+            <tr><th>First Name</th><td>@Model.First_Name</td></tr>
+            <tr><th>Middle Name</th><td>@Model.Middle_Name</td></tr>
+            <tr><th>Last Name</th><td>@Model.Last_Name</td></tr>
+            <tr><th>Father's Name</th><td>@Model.Father_Name</td></tr>
+            <tr><th>Mobile Number</th><td>@Model.Mobile_Number</td></tr>
+            <tr><th>Email ID</th><td>@Model.Email_Id</td></tr>
+            <tr><th>Aadhar</th><td>@Model.Aadhar</td></tr>
+            <tr><th>Gender</th><td>@Model.Gender</td></tr>
+            <tr><th>Date of Birth</th><td>@Model.Date_Of_Birth.ToShortDateString()</td></tr>
+            <tr><th>Residential Address</th><td>@Model.Residential_Address</td></tr>
+            <tr><th>Permanent Address</th><td>@Model.Permanent_Address</td></tr>
+            <tr><th>Occupation Type</th><td>@Model.Occupation_Type</td></tr>
+            <tr><th>Source of Income</th><td>@Model.Source_Of_Income</td></tr>
+            <tr><th>Gross Annual Income</th><td>@Model.Gross_Annual_Income</td></tr>
+            <tr><th>Opted for Debit Card</th><td>@((bool)Model.Opt_Debit_Card ? "Yes" : "No")</td></tr>
+            <tr><th>Opted for Net Banking</th><td>@((bool)Model.Opt_Net_Banking ? "Yes" : "No")</td></tr>
+        </table>
+    </div>
+    <a href="@Url.Action("PendingApprovals", "AdminApproval")" class="btn btn-secondary">Back to Pending Approvals</a>
+</div>
+
+        
+        <style>
+            .card-headers {
+                background-color: #1877F2;
+                color: white;
+                font-size: 24px;
+                font-weight: 600;
+                text-align: center;
+                padding: 20px 10px;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                border-bottom: 1px solid #ddd;
+            }
+            .btn-secondary{
+                margin:10px;
+                
+            }
+            </style>

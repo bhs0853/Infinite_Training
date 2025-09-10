@@ -1,0 +1,89 @@
+﻿@model (Project.Models.Customer, List<Project.Models.Transaction_Details>)
+@{
+    ViewBag.Title = "Customer Details";
+    var sent = ViewBag.SentTransactions as List<Project.Models.Transaction_Details>;
+    var received = ViewBag.ReceivedTransactions as List<Project.Models.Transaction_Details>;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-4">
+
+   
+    <div class="card shadow-sm mb-4">
+        <div class="card-headers text-white">
+            <strong>Basic Info</strong>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-striped align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Customer ID</th>
+                        <th>Residential Address</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@Model.Item1.Customer_Id</td>
+                        <td>@Model.Item1.Residential_Address</td>
+                        <td>@Model.Item1.Accounts.First().Balance.ToString()</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+  
+    <div class="card shadow-sm">
+        <div class="card-headers text-white">
+            <strong>Recent Transactions</strong>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-striped align-middle text-center">
+                <thead class="table-light">
+                    <tr>
+                        <th>Transaction ID</th>
+                        <th>Date</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var txn in Model.Item2)
+                    {
+                        var rowColor = @txn.Transaction_Type == "CREDIT" ? "green" : "red";
+                        <tr style="color:@rowColor">
+                            <td>@txn.Transaction_Id</td>
+                            <td>@txn.Transaction_Date.ToString()</td>
+                            <td>@txn.Transaction_Type</td>
+                            <td>@txn.Amount</td>
+                            <td>@txn.Balance</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .card-headers {
+        background-color: #1877F2;
+        color: white;
+        font-size: 24px;
+        font-weight: 600;
+        text-align: center;
+        padding: 20px 10px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    table th {
+        text-align: center;
+        vertical-align: middle;
+    }
+</style>
